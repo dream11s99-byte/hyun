@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>「행정정보 통합관리 기본법」 조항 구조 열람 시스템</title>
+  <meta name="description" content="부처 직원을 위한 가상 「행정정보 통합관리 기본법」(본칙 14조) 조항 구조 검색 및 스마트 열람 시스템">
+  <link rel="stylesheet" href="./law.css">
+</head>
+<body class="theme-light">
+  <!-- 상단 공공 헤더 바 -->
+  <div class="gov-top-bar">
+    <div class="gov-container top-bar-flex">
+      <div class="gov-identity">
+        <span class="gov-flag">🏛️</span>
+        <span class="gov-org-name">대한민국 행정망 종합 법령 포털</span>
+        <span class="gov-divider">|</span>
+        <span class="gov-sub">부처 직원 전용 법령 편람</span>
+      </div>
+      <div class="top-nav-links">
+        <a href="./index.html" class="top-link">← 협력사업 예산 심사 페이지</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 메인 헤더 영역 -->
+  <header class="law-header">
+    <div class="gov-container header-inner">
+      <div class="law-title-wrap">
+        <div class="law-type-badge">법률 제2026-04호 (가상)</div>
+        <h1 class="law-title">행정정보 통합관리 기본법</h1>
+        <div class="law-meta">
+          <span>[시행 2026. 7. 1.] [법률 제2026-04호, 2026. 1. 15., 제정]</span>
+          <span class="meta-dot">•</span>
+          <span>소관부처: 행정안전부 (공공데이터총괄과)</span>
+          <span class="meta-dot">•</span>
+          <span class="tag-status">본칙 14조 완제</span>
+        </div>
+      </div>
+
+      <!-- 상단 글로벌 툴바 -->
+      <div class="law-quick-toolbar">
+        <!-- 폰트 크기 조절 -->
+        <div class="tool-group" title="본문 글자 크기 조절">
+          <button type="button" class="tool-btn font-size-btn" data-size="sm">A-</button>
+          <button type="button" class="tool-btn font-size-btn active" data-size="md">A</button>
+          <button type="button" class="tool-btn font-size-btn" data-size="lg">A+</button>
+        </div>
+
+        <!-- 테마 전환 -->
+        <button type="button" id="themeToggleBtn" class="tool-btn" title="다크/라이트 모드 전환">
+          <span class="theme-icon">🌙</span> <span class="btn-text">다크모드</span>
+        </button>
+
+        <!-- 전체 펼치기 / 접기 -->
+        <button type="button" id="toggleAllBtn" class="tool-btn" title="조문 전체 접기/펼치기">
+          <span class="toggle-icon">📂</span> <span class="btn-text">모두 접기</span>
+        </button>
+
+        <!-- 인쇄 버튼 -->
+        <button type="button" id="printBtn" class="tool-btn highlight" title="문서 인쇄 또는 PDF 저장">
+          <span>🖨️ 인쇄 / PDF</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 검색 및 필터 헤더 -->
+  <section class="search-section">
+    <div class="gov-container">
+      <div class="search-panel">
+        <div class="search-input-wrapper">
+          <span class="search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="lawSearchInput" 
+            class="law-search-input" 
+            placeholder="조문 번호(예: 제5조, 14조), 조문 제목 또는 검색할 키워드(예: 암호화, 위원회, 3년, 신청)를 입력하세요..." 
+            autocomplete="off"
+            aria-label="법령 조문 검색"
+          >
+          <button type="button" id="searchClearBtn" class="search-clear-btn" title="검색어 지우기" style="display: none;">✕</button>
+        </div>
+        <div class="search-meta-bar">
+          <div class="search-stats" id="searchStats">
+            <span>총 <strong id="totalArticleCount">14</strong>개 조항 열람 가능</span>
+          </div>
+          <div class="quick-keywords">
+            <span class="kw-label">추천 키워드:</span>
+            <button type="button" class="kw-chip" data-kw="기본계획">#기본계획</button>
+            <button type="button" class="kw-chip" data-kw="공동이용">#공동이용</button>
+            <button type="button" class="kw-chip" data-kw="품질관리">#품질관리</button>
+            <button type="button" class="kw-chip" data-kw="안전성 확보">#안전성 확보</button>
+            <button type="button" class="kw-chip" data-kw="비밀유지">#비밀유지</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 메인 2단 레이아웃 (목차 사이드바 + 조문 본문) -->
+  <main class="gov-container main-content-layout">
+    <!-- 좌측 목차 내비게이션 (TOC) -->
+    <aside class="law-sidebar" id="lawSidebar" aria-label="법령 조문 목차">
+      <div class="sidebar-sticky">
+        <div class="sidebar-header">
+          <h2 class="sidebar-title">
+            <span>📑</span> 조항 목차 (본칙 14조)
+          </h2>
+        </div>
+        <nav class="toc-nav" id="tocNav">
+          <!-- JS에서 장 및 조 목차 목록 동적 렌더링 -->
+        </nav>
+      </div>
+    </aside>
+
+    <!-- 우측 본문 조문 영역 -->
+    <article class="law-articles-wrapper" id="articlesWrapper">
+      <!-- 조문 목록이 JS를 통해 렌더링되거나 구조화되어 채워집니다 -->
+      <div id="articlesContainer"></div>
+    </article>
+  </main>
+
+  <!-- 하단 푸터 -->
+  <footer class="gov-footer">
+    <div class="gov-container footer-content">
+      <div class="footer-info">
+        <p class="gov-title">행정정보 통합관리 기본법 조령편람 시스템</p>
+        <p class="gov-desc">본 법률은 국가 행정기관 및 공공부처 직원의 업무 편의와 이해를 돕기 위해 구성된 가상 법령 안내 시스템입니다.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#top" class="back-to-top">▲ 맨 위로</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 복사 완료 토스트 알림 -->
+  <div id="copyToast" class="copy-toast" role="alert" aria-live="polite">
+    <span class="toast-check">✓</span>
+    <span id="copyToastMsg">조문 내용이 클립보드에 복사되었습니다. (기안문 등에 붙여넣기 가능)</span>
+  </div>
+
+  <script src="./law.js"></script>
+</body>
+</html>
